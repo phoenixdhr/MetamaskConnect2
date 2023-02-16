@@ -73,8 +73,7 @@ async function initialize() {
   MetaMaskClientCheck();
 }
 
-initialize();
-// window.addEventListener("DOMContentLoaded", initialize);
+window.addEventListener("DOMContentLoaded", initialize);
 
 //Falta: Agregar un listener que escuche cunado una cuenta demetamask se desconecta, debe comunicar al front
 //Falta: Agregar un listener que esuche un cambio de red
