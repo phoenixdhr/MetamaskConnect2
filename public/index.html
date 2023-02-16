@@ -46,7 +46,7 @@
                 alt="Card image cap">
               <div class="card-body">
                 <h4 class="card-title">Basic Actions</h4>
-                <button class="btn btn-primary btn-lg btn-block mb-3" id="connectButton" >connectButton</button>
+                <button class="btn btn-primary btn-lg btn-block mb-3" id="connectButton" ></button>
                 <button class="btn btn-primary btn-lg btn-block mb-3" id="getAccounts">eth_accounts</button>
                 <p class="info-text alert alert-secondary">eth_accounts result: <span id="getAccountsResult"></span></p>
               </div>
@@ -64,8 +64,9 @@
               <div class="card-body">
                 <h4 class="card-title">Contract</h4>
                 <button class="btn btn-primary btn-lg btn-block mb-3" id="deployButton" >Deploy Contract</button>
-                <button class="btn btn-primary btn-lg btn-block mb-3" id="depositButton" disabled>Deposit</button>
-                <button class="btn btn-primary btn-lg btn-block mb-3" id="withdrawButton" disabled>Withdraw</button>
+                <input class="btn  btn-lg btn-block mb-3" id="valueETH" placeholder="Ingresa monto ETH">
+                <button class="btn btn-primary btn-lg btn-block mb-3" id="depositButton" >Deposit</button>
+                <button class="btn btn-primary btn-lg btn-block mb-3" id="withdrawButton" >Withdraw</button>
                 <p class="info-text alert alert-secondary">Contract Status: <span id="contractStatus">Not clicked</span></p>
               </div>
             </div>
@@ -106,7 +107,7 @@
       </section>
     </main>
   
-    <script src="../dist/index.js"></script>
+    <script src="../dist/main.js"></script>
     
   </body>
 </html>

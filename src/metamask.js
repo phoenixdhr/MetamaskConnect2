@@ -1,43 +1,54 @@
 import MetaMaskOnboarding from "@metamask/onboarding";
-import {deploy} from "./delpoy"
 
 //const forwarderOrigin = "http://localhost:9011";
 
-function initialize() {
+async function initialize() {
+  const signers = await ethereum.request({ method: "eth_accounts" });
   // Importamos botones de index.HTML
   const onboardButton = document.getElementById("connectButton");
   const getAccounts = document.getElementById("getAccounts");
   const getAccountsResult = document.getElementById("getAccountsResult");
 
-
-  // isMetaMaskInstalled, funcion que verifica que exista el objeto "window.ethereum" y se haya instalado "metamask" 
+  // isMetaMaskInstalled, funcion que verifica que exista el objeto "window.ethereum" y se haya instalado "metamask"
   const isMetaMaskInstalled = () => {
     const { ethereum } = window;
     return Boolean(ethereum && ethereum.isMetaMask);
   };
 
-  const MetaMaskClientCheck = () => {
+  const MetaMaskClientCheck = async () => {
+    // Se evalua si existe el objeto window y si esta instalado Metamask
     if (isMetaMaskInstalled()) {
-      // Si metamask está instaaldo, el boton dirá: "conectar"
-      onboardButton.innerText = "connect";
 
+      // Se evalua si ya se tiene una cuenta conectada, el boton dira: Conectado! y estará desabilitado
+      if (signers.length ) {
+        onboardButton.innerText = "Conectado!";
+        onboardButton.disabled = true;
+      }else{
+
+      // Si metamask está instalado, pero no se tiene ninguna cuneta conectada el boton dirá: "conectar" y estará habilidado
       // onClickConnect funcion onclick para conectarse a metamask
       onboardButton.onclick = onClickConnect;
+      onboardButton.innerText = "connect MetaMaskClientCheck";
+      onboardButton.disabled = false;
+      }
 
     } else {
       // Si metamask no esta instalado, el botton dirá: Instalar metamask
       onboardButton.innerText = "instalar metamask";
-
+      onboardButton.disabled = false;
       // onClickConnect funcion onclick para instalar metamask
       onboardButton.onclick = onClickInstall;
     }
   };
 
-
   // onClickConnect, funcion async que se conecta a metamask
   const onClickConnect = async () => {
     try {
       await ethereum.request({ method: "eth_requestAccounts" });
+      onboardButton.disabled = true;
+      onboardButton.innerText = "Connected!";
+      // window.location.reload();
+      console.log("ethereum is connect?", ethereum.isConnected());
     } catch (error) {
       console.error(error);
     }
@@ -57,13 +68,13 @@ function initialize() {
     getAccountsResult.innerText = address[0];
   });
 
+
+
   MetaMaskClientCheck();
 }
 
-window.addEventListener("DOMContentLoaded", initialize);
+initialize();
+// window.addEventListener("DOMContentLoaded", initialize);
 
-
-const deployButton= document.querySelector("#deployButton")
-deployButton.addEventListener("click", deploy)
-
-
+//Falta: Agregar un listener que escuche cunado una cuenta demetamask se desconecta, debe comunicar al front
+//Falta: Agregar un listener que esuche un cambio de red
