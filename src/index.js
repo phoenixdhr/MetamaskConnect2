@@ -1,3 +1,6 @@
 import "./metamask"
 import "./deploy.js"
 import "./status"
+import "./sendETH"
+import "./singTypeData"
+import "./sendTokens"

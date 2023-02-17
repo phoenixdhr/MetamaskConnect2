@@ -77,11 +77,14 @@
             <div class="card full-width">
               <div class="card-body">
                 <h4 class="card-title">Send Eth</h4>
-                <button class="btn btn-primary btn-lg btn-block mb-3" id="sendButton" disabled>Send</button>
-                <p class="info-text alert alert-info">Contract Status: <span id="contractStatus">Not clicked</span></p>
+                <input class="btn btn-lg btn-block mb-3" id="toAddress2" placeholder="Ingresa address destino">
+                <input class="btn btn-lg btn-block mb-3" id="valueETH2"   placeholder="ingresa monto ETH ">
+                <button class="btn btn-primary btn-lg btn-block mb-3" id="sendButton" >Send</button>
+                <p class="info-text alert alert-info">Contract Status: <span id="contractStatus2">Not clicked</span></p>
                 <hr />
                 <h4>Sign Typed Data</h4>
-                <button class="btn btn-primary btn-lg btn-block mb-3" id="signTypedData" disabled>Sign</button>
+                <input class=" btn-lg btn-block mb-3" id="toSignData" placeholder="Ingresa dato para firmar">
+                <button class="btn btn-primary btn-lg btn-block mb-3" id="signButton" >Sign</button>
                 <p class="info-text alert alert-warning">Sign Typed Data Result: <span id="signTypedDataResult"></span></p>
               </div>
             </div>
